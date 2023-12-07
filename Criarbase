@@ -1,0 +1,41 @@
+import pandas as pd
+from faker import Faker
+import random
+from datetime import datetime, timedelta
+
+fake = Faker()
+
+# Criando uma lista para armazenar dados
+dados = []
+
+# Gerar 100 linhas de dados - para mais linhas é só mudar o 100
+for _ in range(100):
+    data.append([
+        fake.name(),
+        fake.word(),
+        fake.job(),
+        fake.name(),
+        fake.word(),
+        random.choice(['Presencial', 'Online']),
+        fake.name(),
+        random.choice(['Concluído', 'Em Andamento', 'Cancelado']),
+        random.choice(['Aprovado', 'Não Aprovado', 'Pendente']),
+        random.randint(70, 100),
+        fake.date_between('-3M', 'today'),
+        (fake.date_between('-3M', 'today') + timedelta(days=random.randint(1, 15))).strftime('%Y-%m-%d'),
+        fake.time(),
+        fake.time(),
+        random.choice(['Excelente', 'Bom', 'Regular']),
+        random.choice(['Sim', 'Não'])
+    ])
+
+# Criando um DataFrame com os dados
+df = pd.DataFrame(data, columns=[
+    'Nome da Pessoa', 'Turma', 'Função na Empresa', 'Nome do Líder', 'Nome do Treinamento',
+    'Tipo do Treinamento', 'Nome do Treinador', 'Status do Treinamento', 'Status de Aprovação',
+    'Nota da Prova', 'Data Inicial', 'Data Final', 'Tempo Realizado', 'Duração Esperada',
+    'Avaliação do Treinamento', 'Aplicável no Dia a Dia'
+])
+
+# Exportar para CSV
+df.to_csv('dados_treinamento.csv', index=False)
