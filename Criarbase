@@ -10,7 +10,7 @@ dados = []
 
 # Gerar 100 linhas de dados - para mais linhas é só mudar o 100
 for _ in range(100):
-    data.append([
+    dados.append([
         fake.name(),
         fake.word(),
         fake.job(),
@@ -30,7 +30,7 @@ for _ in range(100):
     ])
 
 # Criando um DataFrame com os dados
-df = pd.DataFrame(data, columns=[
+df = pd.DataFrame(dados, columns=[
     'Nome da Pessoa', 'Turma', 'Função na Empresa', 'Nome do Líder', 'Nome do Treinamento',
     'Tipo do Treinamento', 'Nome do Treinador', 'Status do Treinamento', 'Status de Aprovação',
     'Nota da Prova', 'Data Inicial', 'Data Final', 'Tempo Realizado', 'Duração Esperada',
